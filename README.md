@@ -1,29 +1,41 @@
-# 📊 Projeto de Coleta de Dados – Cursos Online
+# 📊 Coleta de Dados para Análise de Engajamento em Cursos Online
 
-## 📌 Descrição
-Este projeto tem como objetivo coletar dados de cursos online utilizando Python e Selenium, gerando uma base estruturada para análises futuras.
+## Contexto do Projeto
+Este projeto faz parte de uma iniciativa de pesquisa voltada à análise de comportamento e engajamento em plataformas de cursos online, com foco na construção de bases de dados para estudos futuros relacionados à evasão (churn).
 
-## 🚀 Funcionalidades
-- Coleta de informações de cursos a partir de URLs
-- Suporte a múltiplas URLs
-- Extração de:
-  - Título
-  - Preço
-  - Avaliação
-  - Número de alunos
-- Geração de arquivo CSV com os dados
+## Objetivo
+Desenvolver um sistema de coleta automatizada de dados de cursos online, permitindo a criação de um dataset estruturado para análise de padrões de engajamento.
 
-## 🛠️ Tecnologias Utilizadas
-- Python
-- Selenium
-- CSV
+## Funcionamento
+O script utiliza Python e Selenium para acessar páginas de cursos e extrair informações relevantes, consolidando os dados em um arquivo CSV.
 
-## 📈 Evolução do Projeto
-- Versão 1.0: coleta básica de dados
-- Versão 2.0: suporte a múltiplas URLs e melhoria estrutural
+## Dados Coletados
+- Título do curso  
+- Descrição  
+- Categoria  
+- Preço  
+- Número de alunos  
+- Número de avaliações  
+- Nota média  
+- URL  
 
-## 🎯 Objetivo Acadêmico
-Este projeto faz parte de uma iniciativa de pesquisa voltada à análise de engajamento e comportamento em plataformas de cursos online.
+## Evolução
+- **Versão 1.0:** Coleta básica de dados de uma URL  
+- **Versão 2.0:** Suporte a múltiplas URLs e melhoria estrutural  
 
-## 👤 Autor
+## Aplicação em Pesquisa
+Os dados coletados serão utilizados para:
+- Análise de padrões de engajamento  
+- Identificação de possíveis sinais de evasão  
+- Base para futuros modelos de machine learning (churn prediction)
+
+## Tecnologias
+- Python  
+- Selenium  
+- CSV  
+
+## Autor
 Átila Baeza Palerosi
+
+## Orientador
+Arthur Schneider Figueira
