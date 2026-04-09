@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1] - 2026-04-09
+### Adicionado
+- Colunas: 
+    → "Nome do instrutor" 
+    → "Tempo na plataforma" 
+    → "Quantidade de conteúdos"
+    → "Detalhes"
+    → "Vantagens"
+
+### Melhorado
+- Inclusão de # region nos elementos do código
+
 ## [2.0] - 2026-04-07
 ### Adicionado
 - Suporte à coleta de múltiplas URLs
