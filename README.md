@@ -23,6 +23,7 @@ O script utiliza Python e Selenium para acessar páginas de cursos e extrair inf
 - **Versão 1.0:** Coleta básica de dados de uma URL  
 - **Versão 2.0:** Suporte a múltiplas URLs e melhoria estrutural
 - **Versão 2.1:** Inclusão de novas colunas na base gerada
+- **Versão 2.1.1:** URLs abrem na mesma aba
 
 ## Aplicação em Pesquisa
 Os dados coletados serão utilizados para:
