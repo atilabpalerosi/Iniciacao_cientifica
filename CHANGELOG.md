@@ -1,13 +1,18 @@
 # Changelog
 
+## [2.1.1] - 2026-04-09
+### Melhorado
+- URLs abrem na mesma aba do Chrome, para economia de memória
+- Tratamento de exceção para cursos sem duração
+
 ## [2.1] - 2026-04-09
 ### Adicionado
-- Colunas: 
-    → "Nome do instrutor" 
-    → "Tempo na plataforma" 
-    → "Quantidade de conteúdos"
-    → "Detalhes"
-    → "Vantagens"
+- Novas colunas:
+  - Nome do instrutor
+  - Tempo na plataforma
+  - Quantidade de conteúdos
+  - Detalhes
+  - Vantagens
 
 ### Melhorado
 - Inclusão de # region nos elementos do código
