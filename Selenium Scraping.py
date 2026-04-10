@@ -54,6 +54,7 @@ cabecalho = [
     "descricao",
     "categoria",
     "preco",
+    "idioma",
     "numero_alunos",
     "numero_aulas",
     "duracao_horas",
@@ -174,6 +175,26 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
         
         # 9. Mostrar resultado final
         print(preco_num)
+        # endregion
+
+        # region ----> IDIOMA
+
+        # Pegar todos os spans da página
+        spans = driver.find_elements(By.TAG_NAME, "span")
+
+        # Valor padrão
+        idioma = ""
+
+        # Procurar o idioma entre os textos possíveis
+        for span in spans:
+            texto = span.text.strip()
+
+            if texto == "Português" or texto == "Español" or texto == "English":
+                idioma = texto
+                break
+
+        print(idioma)
+
         # endregion
         
         # region ----> ELEMENTO: NÚMERO DE AULAS/DURAÇÃO DO CURSO
@@ -437,9 +458,10 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
         if vantagens_descricao.startswith(("=", "+", "-", "@")):
             vantagens_descricao = "'" + vantagens_descricao
         
-        linha = [titulo, descricao, categoria, preco_num, numero_alunos, numero_aulas, 
-            duracao, quantidade_conteudos, vantagens_descricao, detalhes_descricao, 
-            nome_instrutor, tempo_plataforma, numero_avaliacoes, nota, url]
+        linha = [titulo, descricao, categoria, preco_num, idioma, numero_alunos, 
+                 numero_aulas, duracao, quantidade_conteudos, vantagens_descricao, 
+                 detalhes_descricao, nome_instrutor, tempo_plataforma, numero_avaliacoes, 
+                 nota, url]
             
         writer.writerow(linha)        
         opcao = input("Deseja incluir mais algum curso (S/N)?: ")
