@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.3] - 2026-04-10
+### Adicionado
+- Nova coluna:
+  - Subcategoria
+
 ## [2.2] - 2026-04-10
 ### Adicionado
 - Nova coluna:
