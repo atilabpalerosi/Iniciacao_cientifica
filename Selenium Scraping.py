@@ -4,7 +4,7 @@
 # AUTOR: Átila Baeza Palerosi
 # ORIENTADOR: Arthur Schneider Figueira
 # DATA: 2026-04-10
-# VERSÃO: 2.1.1
+# VERSÃO: 2.3
 # ==========================================================
 
 # DESCRIÇÃO:
@@ -53,6 +53,7 @@ cabecalho = [
     "titulo",
     "descricao",
     "categoria",
+    "subcategoria",
     "preco",
     "idioma",
     "numero_alunos",
@@ -143,6 +144,18 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
         
         # 2. Mostrar
         print(categoria)
+        # endregion
+
+        # region ----> ELEMENTO: SUBCATEGORIA
+
+        # 1. Pegar todos os elementos que têm a classe da categoria/subcategoria
+        categorias = driver.find_elements(By.XPATH, "//span[contains(@class, 'breadcrumbs__category-label')]")
+
+        # 2. A subcategoria é o segundo elemento da lista
+        subcategoria = categorias[1].text.strip()
+
+        # 3. Mostrar (teste)
+        print(subcategoria)
         # endregion
         
         # region ----> ELEMENTO: PREÇO DO CURSO
@@ -458,10 +471,10 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
         if vantagens_descricao.startswith(("=", "+", "-", "@")):
             vantagens_descricao = "'" + vantagens_descricao
         
-        linha = [titulo, descricao, categoria, preco_num, idioma, numero_alunos, 
-                 numero_aulas, duracao, quantidade_conteudos, vantagens_descricao, 
-                 detalhes_descricao, nome_instrutor, tempo_plataforma, numero_avaliacoes, 
-                 nota, url]
+        linha = [titulo, descricao, categoria, subcategoria, preco_num, idioma, 
+                 numero_alunos, numero_aulas, duracao, quantidade_conteudos, 
+                 vantagens_descricao, detalhes_descricao, nome_instrutor, 
+                 tempo_plataforma, numero_avaliacoes, nota, url]
             
         writer.writerow(linha)        
         opcao = input("Deseja incluir mais algum curso (S/N)?: ")
