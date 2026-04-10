@@ -3,8 +3,8 @@
 # PROJETO: Coleta de dados para análise de engajamento
 # AUTOR: Átila Baeza Palerosi
 # ORIENTADOR: Arthur Schneider Figueira
-# DATA: 2026-04-09
-# VERSÃO: 2.1
+# DATA: 2026-04-10
+# VERSÃO: 2.1.1
 # ==========================================================
 
 # DESCRIÇÃO:
@@ -97,10 +97,10 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
         url = input("Cole a url do curso: ")
         
         # abre nova aba
-        driver.execute_script("window.open('');")
+        # driver.execute_script("window.open('');")
     
         # muda para a nova aba
-        driver.switch_to.window(driver.window_handles[-1])
+        # driver.switch_to.window(driver.window_handles[-1])
     
         # abre a URL nela
         driver.get(url)
@@ -180,27 +180,43 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
     
         # As duas informações estão no mesmo elemento, o que torna a extração bem mais fácil
         # Porém, nem todas as páginas têm "aulas e horas" — algumas têm só "horas"
-        
-        # 1. Pegar o texto pelo aria-label (mais confiável)
-        # Limitamos a busca ao bloco principal do produto para não capturar dados da aba "Detalhes"
+        # E em alguns casos, o XPath pode capturar um texto inválido
 
-        info = driver.find_element(By.XPATH,"(//div[contains(@aria-label, 'aulas') or contains(@aria-label, 'horas')])[1]").get_attribute("aria-label")
-        
-        # 2. Separar as partes (quando houver "e")
-        partes = info.split(" e ")
-        
-        # 3. Extrair corretamente, tratando os dois casos possíveis
-        
-        # Caso 1: tem aulas E horas
-        if len(partes) == 2:
-            numero_aulas = int(partes[0].split()[0])   # ex: "60 aulas"
-            duracao = int(partes[1].split()[0])        # ex: "30 horas"
-        
-        # Caso 2: tem apenas horas
-        else:
-            numero_aulas = None                        # não há informação de aulas
-            duracao = int(partes[0].split()[0])        # ex: "160 horas"
-        
+        try:
+            # 1. Pegar o texto pelo aria-label (mais confiável)
+            # Limitamos a busca ao primeiro elemento encontrado
+            info = driver.find_element(
+                By.XPATH,
+                "(//div[contains(@aria-label, 'aulas') or contains(@aria-label, 'horas')])[1]"
+            ).get_attribute("aria-label")
+
+            # 2. Separar as partes (quando houver "e")
+            partes = info.split(" e ")
+
+            # 3. Extrair corretamente, tratando os dois casos possíveis
+            # Usamos try para evitar erro caso o texto não comece com número
+
+            try:
+                # Caso 1: tem aulas E horas
+                if len(partes) == 2:
+                    numero_aulas = int(partes[0].split()[0])   # ex: "60 aulas"
+                    duracao = int(partes[1].split()[0])        # ex: "30 horas"
+
+                # Caso 2: tem apenas horas
+                else:
+                    numero_aulas = None
+                    duracao = int(partes[0].split()[0])        # ex: "160 horas"
+
+            except:
+                # Caso o texto seja inválido (ex: "Conteúdo")
+                numero_aulas = None
+                duracao = None
+
+        except NoSuchElementException:
+            # Caso o elemento não exista
+            numero_aulas = None
+            duracao = None
+
         # 4. Imprimir (para teste)
         print(numero_aulas)
         print(duracao)
