@@ -182,8 +182,9 @@ with open(caminho_csv, "w", newline="", encoding="utf-8-sig") as arquivo:
         # Porém, nem todas as páginas têm "aulas e horas" — algumas têm só "horas"
         
         # 1. Pegar o texto pelo aria-label (mais confiável)
-        info = driver.find_element(By.XPATH, "//div[contains(@aria-label, 'aulas') or contains(@aria-label, 'horas')]"
-        ).get_attribute("aria-label")
+        # Limitamos a busca ao bloco principal do produto para não capturar dados da aba "Detalhes"
+
+        info = driver.find_element(By.XPATH,"(//div[contains(@aria-label, 'aulas') or contains(@aria-label, 'horas')])[1]").get_attribute("aria-label")
         
         # 2. Separar as partes (quando houver "e")
         partes = info.split(" e ")
