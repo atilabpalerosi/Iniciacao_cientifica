@@ -25,6 +25,7 @@ O script utiliza Python e Selenium para acessar páginas de cursos e extrair inf
 - **Versão 2.1:** Inclusão de novas colunas na base gerada
 - **Versão 2.1.1:** URLs abrem na mesma aba
 - **Versão 2.2:** Inclusão da coluna "Idioma"
+- **Versão 2.3:** Inclusão da coluna "Subcategoria"
 
 ## Aplicação em Pesquisa
 Os dados coletados serão utilizados para:
